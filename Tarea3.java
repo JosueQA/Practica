@@ -37,29 +37,46 @@ public class Tarea3 {
     public static void Mostrarcuántasvecesserepitecadanúmero (int arreglo[]) {
         Arrays.sort(arreglo);
         int acumulador = 0;
-        int acumulador2 = 0;
         int posicion = 0;
+        System.out.print("El arreglo en orden seria: ");
         for (int dato : arreglo) {
             System.out.print(dato);
         }
-        for (int dato : arreglo){
-            if (arreglo[posicion] == dato) {
+        System.out.print("\n");
+        for (int dato =0; dato != arreglo.length; dato ++){
+            if (arreglo[posicion] == arreglo[dato]) {
                 acumulador++;
-                acumulador2++;
             } else {
-                System.out.print("\nEl numero " + arreglo[posicion] + " se repite " + acumulador + " veces");
-                System.out.print("\n"+dato);
-                posicion = acumulador2;
-                System.out.print(posicion + "\n");
+               if (acumulador == 0) {
+                   acumulador = 1;
+                   System.out.println("El numero " + arreglo[posicion] + " se repite " + acumulador + " veces");
+               } else {
+                   System.out.println("El numero " + arreglo[posicion] + " se repite " + acumulador + " veces");
+               }
+                posicion = posicion + acumulador;
                 acumulador =1;
             }
         }
 
-
+        //MOSTRAR NUMEROS PARES E IMPARES Y SUS PROMEDIOS
+        double cantNumPar = 0;
+        double cantNumInpar = 0;
+        double sumaPar = 0 ;
+        double sumaInpar = 0;
+        for (int dato =0; dato< arreglo.length; dato++){
+            if (arreglo[dato]%2 == 0){
+                System.out.println("El numero " + arreglo[dato] + " en la posicion " + dato + " del arreglo, es par.");
+                cantNumPar++;
+                sumaPar = sumaPar + arreglo[dato];
+            } else {
+                System.out.println("El numero " + arreglo[dato] + " en la posicion " + dato + " del arreglo, es inpar.");
+                cantNumInpar++;
+                sumaInpar = sumaInpar + arreglo[dato];
+            }
+        }
+        double promPar = sumaPar/cantNumPar;
+        double promInpar = sumaInpar/cantNumInpar;
+        System.out.println("La suma de los pares es " + sumaPar + " y su promedio es " + promPar);
+        System.out.println("La suma de los inpares es " + sumaInpar + " y su promedio es " + promInpar);
     }
 }
-/*
-    MOSTRAR CUANTAS VECES SE REPITE CADA NUMERO
-
-    - cuando ya no se acumule, que la posicion tome el valor de la posicion del valor
-    */
